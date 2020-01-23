@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="Utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The Fridge: Sign up</title>
+	<link rel="stylesheet" href="css/login.css" />
+	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div class="rect_head">
+			<img src="images/LOGOnero.png" class="dark-logo" alt="fridge"  width="100" >
+		</div>	
+	</header>
+	<main>
+		<div class="signup">
+			<form action="registration" method="post" >
+				<h2 style="color: white; font-family: 'Montserrat', sans-serif;">Sign up</h2>
+				<div style=" margin-top:23px;">
+				<div style="margin-bottom:10px;">
+						<font style="color: white; font-family: 'Montserrat', sans-serif; font-size:12px; "> 
+							<c:out value="${label}" />
+						</font>
+				</div>
+				
+				<input type="text" name="username" placeholder="Username" style="font-family: 'Montserrat', sans-serif;" ><br><br>
+				<input type="email" name="email" placeholder="Email" style="font-family: 'Montserrat', sans-serif;" ><br><br>
+				<input type="password" name="password" placeholder="Password" style="font-family: 'Montserrat', sans-serif;" ><br><br>
+				<input type="submit" name="signup" value="Submit" style="font-family: 'Montserrat', sans-serif;"><br><br>
+				</div>
+
+			</form>
+		</div>
+
+	</main>
+
+</body>
+</html>
