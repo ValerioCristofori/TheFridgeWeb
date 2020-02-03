@@ -20,9 +20,31 @@
 	<title>The Fridge: recipes</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.js"></script>
 	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+	<script>
+			
+	    var expanded = false;
+	
+		function showCheckboxes() {
+		 
+		  var checkboxes = document.getElementById("checkboxes");
+		  if (!expanded) {
+		    checkboxes.style.display = "block";
+		    expanded = true;
+		  } else {
+		    checkboxes.style.display = "none";
+		    expanded = false;
+		  }
+		}
+		
+		function buttonClicked(i){
+			document.getElementById('indexId').value = i;
+			document.getElementById("formDelete").submit();
+		}
+			
+	</script>
 			
 </head>
 <body>
@@ -75,69 +97,153 @@
 			submit "start search" a destra in alto
 			in mezzo a loro: check combo box per cibi da eliminare
 			 -->
-			 <div class="addFood" align="center">
-			 	<font style="color: white; font-family: 'Montserrat', sans-serif; font-size:12px; "> 
-			 <label>
-				  <input type="text" name="recipesnumber" placeholder="How much recipes?">
-			 </label>
-			 	</font>
-			
-			
-			
-			
-			
-			<form id="form1">
-			
-			<div style="padding:20px">
-			
-			<select id="chkveg" multiple="multiple">
-			
-			
-				<c:forEach var="myB" items="${myBeans}">
-    				Name: <c:out value="${myBean.tName}"/>
-    				Fee: <c:out value="${myBean.tFee}"/>
-				</c:forEach>
-			    
-			    <option value="cheese">Cheese</option>
-			    <option value="tomatoes">Tomatoes</option>
-			    <option value="mozarella">Mozzarella</option>
-			    <option value="mushrooms">Mushrooms</option>
-			    <option value="pepperoni">Pepperoni</option>
-			    <option value="onions">Onions</option>
-			
-			</select>
-			
-			<br /><br />
-			
-			<input type="button" id="btnget" value="Exclude ingredient" />
-			
-			<script type="text/javascript">
-			
-			$(function() {
-			
-			    $('#chkveg').multiselect({
-			
-			        includeSelectAllOption: true
-			    });
-			
-			    $('#btnget').click(function(){
-			
-			        alert($('#chkveg').val());
-			    });
-			});
-			
-			</script>
-			
-			
+		 
+			 
+			 
+			 <div style="float:left; margin-left: 50px; margin-top:50px; height: 500px;">
+				 <div class="multiselect" align="LEFT" >
+				    <div class="selectBox" onclick="showCheckboxes()" >
+				      <h3 style="font-family: 'Montserrat', sans-serif; color: sandybrown;" align="CENTER">Exclude ingredients</h3><br>
+				      <select style="height:400px; background-color:black; opacity: 0.8; border:transparent; border-radius: 10px; padding:7px; " name="foods" multiple >
+				        
+				      
+				      
+				    
+				    
+				      <%
+				      	chooseRecipesUI.initListFood();
+				      	for( int i = 0; i < chooseRecipesUI.getListFood().size(); i++ ){
+				      		%>
+				      		<option style="color:white;" value="<%=chooseRecipesUI.getListFood().get(i)%>"><%=chooseRecipesUI.getListFood().get(i) %></option>
+				      		
+				      		
+				      		<%
+				      	
+				      	}
+				      %>
+				      
+				      
+				    
+					</select>
+					</div>
+				
+				</div>
+				
 			</div>
 			
-			</form>
-			
-			
+			<div style="float:right">
+			 	<form id="formRecipes" action="startSearch" method="post">
+				<span style="margin-left: 400px;">
+				 	<font style="color: white; font-family: 'Montserrat', sans-serif; font-size:12px; "> 
+				 <label>
+					  <input style="background-color:black; opacity:0.7;" type="text" name="recipesnumber" placeholder="How many recipes?" >
+				 </label>
+				 	</font>
+				</span>		
+				<span>	
+					<input id="btnget" type = "submit" value = "Start Search" style="font-family: 'Montserrat', sans-serif;"><br><br>
+				</span>
+				
+				<div >
+						<div>
+							<%
+							
+							if(request.getAttribute("0") == null){
+								
+							}
+							if( request.getAttribute("0") != null){
+							%>
+							<img src="<%=request.getAttribute("0") %>" width="120">
+							<br>
+							<div class=divRecipeBody >								
+								<label style="font-family: 'Montserrat', sans-serif; color:white; font-weight: bold;"><%=request.getAttribute("title0") %></label><br>
+								
+								<label style="font-family: 'Montserrat', sans-serif; color:white;"><%=request.getAttribute("content0") %></label>
+							</div>
+							<%
+							}
+							%>
+							
+						</div>
+						<br>
+						<div>
+							<%
+							if( request.getAttribute("1") != null){
+							%>
+							<img src="<%=request.getAttribute("1") %>" width="120">
+							<br>
+							<div class=divRecipeBody>
+								<label style="font-family: 'Montserrat', sans-serif; color:white; font-weight: bold;"><%=request.getAttribute("title1") %></label><br>
+								<label style="font-family: 'Montserrat', sans-serif; color:white;"><%=request.getAttribute("content1") %></label>
+							</div>
+							<%
+							}
+							%>
+							
+						</div>
+						<br>
+						<div>
+							<%
+							if( request.getAttribute("2") != null){
+							%>
+								<img src="<%=request.getAttribute("2") %>" width="120">
+							<br>
+							<div class=divRecipeBody>
+								<label style="font-family: 'Montserrat', sans-serif; color:white; font-weight: bold;"><%=request.getAttribute("title2") %></label><br>
+								<label style="font-family: 'Montserrat', sans-serif; color:white;"><%=request.getAttribute("content2") %></label>
+							</div>
+							<%
+							}
+							%>
+							
+						</div>
+						<br>
+						<div>
+							<%
+							if( request.getAttribute("3") != null){
+							%>
+								<img src="<%=request.getAttribute("3") %>" width="120">
+							<br>
+							
+							<div class=divRecipeBody>
+								<label style="font-family: 'Montserrat', sans-serif; color:white; font-weight: bold;"><%=request.getAttribute("title3") %></label><br>
+								<label style="font-family: 'Montserrat', sans-serif; color:white;"><%=request.getAttribute("content3") %></label>
+							</div>
+							<%
+							}
+							%>
+							
+						</div>
+						<br>
+						<div>
+							<%
+							if( request.getAttribute("4") != null){
+							%>
+								<img src="<%=request.getAttribute("4") %>" width="120">
+							<br>
+							<div class=divRecipeBody>
+								<label style="font-family: 'Montserrat', sans-serif; color:white; font-weight: bold;"><%=request.getAttribute("title4") %></label><br>
+								<label style="font-family: 'Montserrat', sans-serif; color:white;"><%=request.getAttribute("content4") %></label>
+							</div>
+							<%
+							}
+							%>
+							
+						</div>
 						
-			<input type = "submit" value = "Start Search" style="font-family: 'Montserrat', sans-serif;"><br><br>
+					
+				</div>
+					
+			</form>
+					
+					
+				
+					
+			</div>
 			
-		</div>
+			
+			
+		
 
 
 

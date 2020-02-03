@@ -16,7 +16,7 @@
 			<img src="images/LOGOnero.png" class="dark-logo" alt="fridge"  width="100" >
 		</div>	
 	</header>
-	<main>
+	
 		<div class="signup">
 			<form action="registration" method="post" >
 				<h2 style="color: white; font-family: 'Montserrat', sans-serif;">Sign up</h2>
@@ -30,13 +30,13 @@
 				<input type="text" name="username" placeholder="Username" style="font-family: 'Montserrat', sans-serif;" ><br><br>
 				<input type="email" name="email" placeholder="Email" style="font-family: 'Montserrat', sans-serif;" ><br><br>
 				<input type="password" name="password" placeholder="Password" style="font-family: 'Montserrat', sans-serif;" ><br><br>
-				<input type="submit" name="signup" value="Submit" style="font-family: 'Montserrat', sans-serif;"><br><br>
+				<input type="submit" name="signup" value="Sign up" style="font-family: 'Montserrat', sans-serif;"><br><br>
 				</div>
 
 			</form>
 		</div>
 
-	</main>
+	
 
 </body>
 </html>

@@ -74,17 +74,18 @@
 	
 		</header>
 	</div>
-	
+		
 		 <div class="container" align="center">
+		 	<div id="scroller">
 			 <form name="formDelete" action="home" method="post">
-			 <table  style="width:100%">
-			 	<tbody>
+			 <table style="width:100%">
+			 	<thead>
 				  <tr>
-				    <th style="font-family: 'Montserrat', sans-serif;">Name</th>
-				    <th style="font-family: 'Montserrat', sans-serif;">Quantity</th>
-				    <th style="font-family: 'Montserrat', sans-serif;">Expiration Date</th>
+				    <th style="font-family: 'Montserrat', sans-serif; background-color: sandybrown;">Name</th>
+				    <th style="font-family: 'Montserrat', sans-serif; background-color: sandybrown;">Quantity</th>
+				    <th style="font-family: 'Montserrat', sans-serif; background-color: sandybrown;">Expiration Date</th>
 				  </tr>	
-				   	
+				<tbody>   
 				  	<%	viewFridgeUI.showContent();
 				  		for( int i=0; i<viewFridgeUI.getContent().size() ; i++ ){
 				  			String name =  viewFridgeUI.getContent().get(i).get(0);
@@ -92,15 +93,15 @@
 				  			String date =  viewFridgeUI.getContent().get(i).get(2);
 				  			%>
 				  			<tr style="text-align:center;">
-				  			<td style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
+				  			<td id="nameColumn" style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
 				            	<label for="name"><%=name %></label>
 				            	
 				        	</td>
-				        	<td style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
+				        	<td id="quantityColumn" style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
 				            	<label for="quantity"><%=quantity %></label>
 				            	
 				        	</td>
-				        	<td style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
+				        	<td id="dateColumn" style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
 				            	<label for="date"><%=date %></label>
 				            	
 				        	</td>
@@ -119,7 +120,7 @@
 				</tbody>
 			</table> 
 			</form>
-			
+			</div>
 		</div>	
 
 	

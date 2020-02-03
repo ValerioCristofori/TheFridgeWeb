@@ -5,27 +5,28 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import logic.bean.BeanChooseRecipes;
 import logic.controller.ChooseRecipesController;
 import logic.implementation.exceptions.EmptyException;
 
 public class ChooseRecipesUI {
-	private ArrayList<String> links;
-	private ArrayList<String> ingredients;
+	private ArrayList<String> images;
+	private ArrayList<String> titles;
+	private ArrayList<ArrayList<String>> contents;
+	private ArrayList<String> listFood;
 	
 	public ChooseRecipesUI() {
-		this.links = new ArrayList<>();
-		this.ingredients = new ArrayList<>();
+		this.images = new ArrayList<>();
+		this.titles = new ArrayList<>();
+		this.contents = new ArrayList<>();
 	}
 	
-	public ObservableList<String> getListFood(){
+	public void initListFood(){ 
 		try {
 			BeanChooseRecipes beanChooseRecipes = ChooseRecipesController.takeFood();
-			ArrayList<String> list = (ArrayList<String>) beanChooseRecipes.getListFood();
-			
-			return FXCollections.observableArrayList( list );				
+			this.listFood = (ArrayList<String>) beanChooseRecipes.getListFood();
+			return;
+			//return FXCollections.observableArrayList( list );				
 
 		}catch( EmptyException ee ) {
 			// creo un Logger 
@@ -33,33 +34,61 @@ public class ChooseRecipesUI {
 	        		ChooseRecipesUI.class.getName()); 
 	        logger.log(Level.WARNING, "empty food list");
 		 }
-			return null;
+			
 	}
 	
 	public void clickedOnStartSearch( List<String> listEliminatedIngredients , int numRecipes ) {
-		/*
+		
 		BeanChooseRecipes beanChooseRecipes = new BeanChooseRecipes();
-		beanChooseRecipes.setListFood( listEliminatedIngredients);
+		beanChooseRecipes.setListFood( (ArrayList<String>) listEliminatedIngredients);
 		beanChooseRecipes.setNumRecipes(numRecipes);
 		ChooseRecipesController chooseRecipesCTRL = new ChooseRecipesController();		
 		beanChooseRecipes = chooseRecipesCTRL.startSearch(beanChooseRecipes);
 		//passare la lista di ricette al controllerFXML
+		
+		ArrayList<String> listImages = new ArrayList<>();
+		ArrayList<String> listTitle = new ArrayList<>();
+		ArrayList<ArrayList<String>> listContents = new ArrayList<>();
+		
 		for( int i = 0; i< beanChooseRecipes.getListRecipe().size(); i++ ) {
-			this.links.add(beanChooseRecipes.getListRecipe().get(i).getLink());
-			this.ingredients.add(beanChooseRecipes.getListRecipe().get(i).getListFoodName().get(0));
-			this.ingredients.add(beanChooseRecipes.getListRecipe().get(i).getListFoodName().get(1));
-			this.ingredients.add(beanChooseRecipes.getListRecipe().get(i).getListFoodName().get(2));
+			listImages.add(beanChooseRecipes.getListRecipe().get(i).getLink());
+			listTitle.add(beanChooseRecipes.getListRecipe().get(i).getTitle());
+			listContents.add(beanChooseRecipes.getListRecipe().get(i).getContent());
 		}
-		*/
+		this.images = listImages;
+		this.titles = listTitle;
+		this.contents = listContents;
+
 	}
 	
+
 	
-	
-	public List<String> getLinks(){
-		return this.links;
+	public List<String> getListFood(){
+		return this.listFood;
 	}
-	
-	public List<String> getIngredients(){
-		return this.ingredients;
+
+	/**
+	 * @return the contents
+	 */
+	public ArrayList<ArrayList<String>> getContents() {
+		return contents;
 	}
+
+
+
+	/**
+	 * @return the titles
+	 */
+	public ArrayList<String> getTitles() {
+		return titles;
+	}
+
+
+	/**
+	 * @return the images
+	 */
+	public ArrayList<String> getImages() {
+		return images;
+	}
+
 }

@@ -5,7 +5,9 @@ import java.util.List;
 
 public class Recipe {
 	private ArrayList<String> listFoodName;
+	private ArrayList<String> content;
 	private String link;
+	private String title;
 	/**
 	 * @return the listFoodName
 	 */
@@ -29,6 +31,32 @@ public class Recipe {
 	 */
 	public void setLink(String link) {
 		this.link = link;
+	}
+	
+	
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/**
+	 * @return the content
+	 */
+	public ArrayList<String> getContent() {
+		return content;
+	}
+	/**
+	 * @param content the content to set
+	 */
+	public void setContent(ArrayList<String> content) {
+		this.content = content;
 	}
 	
 	@Override

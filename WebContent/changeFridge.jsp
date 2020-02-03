@@ -20,8 +20,71 @@
 	<title>The Fridge: change fridge</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
-	
-	<script>	
+	<style>
+		/* Popup container - can be anything you want */
+		.popup {
+		  position: relative;
+		  display: inline-block;
+		  cursor: pointer;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+		
+		/* The actual popup */
+		.popup .popuptext {
+		  visibility: hidden;
+		  width: 160px;
+		  background-color: #555;
+		  color: #fff;
+		  text-align: center;
+		  border-radius: 6px;
+		  padding: 8px 0;
+		  position: absolute;
+		  z-index: 1;
+		  bottom: 125%;
+		  left: 50%;
+		  margin-left: -80px;
+		}
+		
+		/* Popup arrow */
+		.popup .popuptext::after {
+		  content: "";
+		  position: absolute;
+		  top: 100%;
+		  left: 50%;
+		  margin-left: -5px;
+		  border-width: 5px;
+		  border-style: solid;
+		  border-color: #555 transparent transparent transparent;
+		}
+		
+		/* Toggle this class - hide and show the popup */
+		.popup .show {
+		  visibility: visible;
+		  -webkit-animation: fadeIn 1s;
+		  animation: fadeIn 1s;
+		}
+		
+		/* Add animation (fade in the popup) */
+		@-webkit-keyframes fadeIn {
+		  from {opacity: 0;} 
+		  to {opacity: 1;}
+		}
+		
+		@keyframes fadeIn {
+		  from {opacity: 0;}
+		  to {opacity:1 ;}
+		}
+	</style>
+	<script>
+		
+		function popupClicked(i) {
+		  var popup = document.getElementById("myPopup" + i);
+		  popup.classList.toggle("show");
+		}
+		
 		function buttonAccept(i){
 			
 			document.getElementById('action').value = "accept";
@@ -104,20 +167,22 @@
 		<div class="profile_div" style="align: center; float: left;">
 			
 				<div>
+					<form action="profile" id="profileForm" method="post" >
 					<div class="profile_image" style="margin-left: 90px;" >
 						<img src="images/ominoIcon.png" class="omino" alt="fridge"  width="60"  >
 					</div>
 					<div>
-						<form action="change" method="get">
+						
 							<label>Username: </label><br>
 							<label><%= changeFridgeUI.getUsername() %></label><br>
 							
 							<label>Email:</label><br>
 							<label><%= changeFridgeUI.getEmail() %></label>
-						</form>
+						
 					</div>
-					
-				<br><br>	
+					<input type="submit" name="actionProfileName" value="Logout" style="font-family: 'Montserrat', sans-serif; background-color: #E14D43; ">
+					</form>
+				<br>	
 				</div >
 				<form action="profile" id="profileForm" method="post" >
 					<input type="hidden" name="actionProfileName" id="actionProfileId" />
@@ -125,7 +190,7 @@
 					<button onclick="myFridgeClicked()" style="border: none; background-color: transparent; margin-top: 30px; margin-left: 60px;" ><img src="images/fridgeWeb.png" alt="fridge"  width="130"  ></button><br>
 				
 				
-					<input type="submit" name="actionProfileName" value="Delete account" style="font-family: 'Montserrat', sans-serif; background-color: #E14D43; margin-top: 150px; "><br><br>
+					<input type="submit" name="actionProfileName" value="Delete account" style="font-family: 'Montserrat', sans-serif; background-color: #E14D43; margin-top: 130px; "><br><br>
 		  		</form>
 		  </div>
 		  <div style="float: right;margin-top: 40px;">	
@@ -154,9 +219,13 @@
 							            	<label for="name"><%=name %></label>
 							            	
 							        	</td>
-							        	<td style="font-family: 'Montserrat', sans-serif; margin-left: 50px; " >
-							            	<label for="message"><%=message %></label>
-							            	
+							   
+							        	<td>
+							            	<div class="popup" onclick="popupClicked('<%=i%>')">
+							            		<img src="images/message_icon.png" alt="message"  width="30" >
+											    <span class="popuptext" id="myPopup<%=i%>"><%=message %></span>
+											</div>
+																            	
 							        	</td>
 							        	<td>
 							        		
@@ -206,7 +275,7 @@
 			 			}
 			 			catch(NullPointerException npe){
 			 				%>
-			 				<h3 style="font-family: 'Montserrat', sans-serif; color:white;" align="CENTER" >You have no shared fridge</h3>
+			 				<h3 style="font-family: 'Montserrat', sans-serif; color:black;" align="CENTER" >You have no shared fridge</h3>
 			 				<%
 			 			}
 			 		%>

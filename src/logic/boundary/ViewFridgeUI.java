@@ -17,7 +17,7 @@ public class ViewFridgeUI{
 	}
 	
 	public void showContent() {
-		try {
+		try { 
 			ViewFridgeController viewFridgeCTRL = new ViewFridgeController();
 			BeanViewFridge beanViewFridge = viewFridgeCTRL.takeContent();
 			

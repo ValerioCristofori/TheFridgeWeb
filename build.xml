@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE xml>
 <!-- WARNING: Eclipse auto-generated file.
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
@@ -7,6 +6,7 @@
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="TheFridgeWeb">
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="../../../../snap/eclipse/40/"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -45,12 +45,50 @@
         <pathelement location="WebContent/WEB-INF/lib/jstl-1.2.jar"/>
     </path>
     <path id="EAR Libraries.libraryclasspath"/>
+    <path id="JUnit 5.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.api_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.engine_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.migrationsupport_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.jupiter.params_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.commons_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.engine_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.launcher_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.runner_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.platform.suite.api_1.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit.vintage.engine_5.4.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.opentest4j_1.1.1.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.apiguardian_1.0.0.v20190212-2109.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
     <path id="TheFridgeWeb.classpath">
         <pathelement location="build/classes"/>
         <path refid="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
         <pathelement location="../../Scaricati/mysql-connector-java_8.0.18-1ubuntu19.10_all/usr/share/java/mysql-connector-java-8.0.18.jar"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+        <pathelement location="../../Scaricati/org.json-20130603.jar"/>
+        <pathelement location="../../Scaricati/json-20140107.jar"/>
+        <pathelement location="../../Scaricati/httpcore-nio-4.3.2.jar"/>
+        <pathelement location="../../Scaricati/commons-codec-1.6.jar"/>
+        <pathelement location="../../Scaricati/gson-2.6.2-javadoc.jar"/>
+        <pathelement location="../../Scaricati/gson-2.6.2.jar"/>
+        <pathelement location="../../Scaricati/unirest-java-1.4.9.jar"/>
+        <pathelement location="../../Scaricati/httpasyncclient-4.0-beta4.jar"/>
+        <pathelement location="../../Scaricati/commons-lang-2.6.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/jna-platform-4.5.2.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/jna-4.5.2.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/httpmime-4.5.11.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/httpclient-win-4.5.11.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/httpclient-osgi-4.5.11.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/httpclient-cache-4.5.11.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/httpclient-4.5.11.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/fluent-hc-4.5.11.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/commons-logging-1.2.jar"/>
+        <pathelement location="../../Scaricati/commons-collections-3.2.2/commons-collections-3.2.2-javadoc.jar"/>
+        <pathelement location="../../Scaricati/commons-collections-3.2.2/commons-collections-3.2.2.jar"/>
+        <pathelement location="../../Scaricati/httpcomponents-client-4.5.11/lib/httpcore-4.4.13.jar"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
@@ -88,5 +126,22 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="TestRecipesWebsiteUI">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="logic.boundary.TestRecipesWebsiteUI" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="TheFridgeWeb.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>

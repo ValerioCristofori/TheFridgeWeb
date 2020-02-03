@@ -33,5 +33,9 @@ import logic.boundary.ChangeFridgeUI;
 			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 			rd.forward(req, res);
 		}
+		else if( action.equals("Logout")) {
+			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+			rd.forward(req, res);
+		}
 	}
 }

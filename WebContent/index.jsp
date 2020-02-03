@@ -17,8 +17,8 @@
 		</div>	
 	</header>
 
-	<main>
-		<div class="corpo">
+	
+	<div class="corpo">
 			<div class="parag">
 				<p style="font-weight: bold; font-family: 'Montserrat', sans-serif; font-size: 22px;  ">
 					Welcome to <font color=#f4a46; >TheFridge</font>.<br> 
@@ -45,13 +45,15 @@
 					<div class="row">
 			            <div class="col-lg-4 text-center">
 			                <input name="login" type="submit" value="Sign in" style="font-family: 'Montserrat', sans-serif;">
-			                <h5 style="color: white; font-family: 'Montserrat', sans-serif;">Don't have account?</h5>
-							<a href="signup.jsp" style="font-family: 'Montserrat', sans-serif;">Sign up</a>
+			                <br><br>
+			                <h5 style="color: white; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: 1px;">Don't have account?
+								<a href="signup.jsp" style="font-family: 'Montserrat', sans-serif; color: sandybrown; font-size: 10px;">Sign up</a>
+							</h5>
 			            </div>
 		       		</div>
 				</form>
 			</div>
-		</div>
-	</main>
+	</div>
+	
 </body>
 </html>

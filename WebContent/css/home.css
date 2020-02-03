@@ -77,11 +77,37 @@ nav{
   border: 1px solid white;
   position: relative;
   display: table;
-  background: rgba(127,255,212, 0.8); ;
+  background: rgba(0,0,0,0.7);
+  padding-top: 20px;
   margin: 0 auto;
-  margin-top:90px;
+  margin-top:70px;
   height: 430px;
   width: 65%;
+  border-radius: 20px;
+  overflow-y: scroll;
+  max-height: 430px;
+}
+
+#nameColumn{
+	background: rgba(41,171,135,0.9);
+	
+}
+
+#quantityColumn{
+	background: rgba(41,171,135,0.9);
+	
+}
+
+#dateColumn{
+	background: rgba(41,171,135,0.9);
+	
+}
+
+
+#scroller{
+	height: 430px;
+	overflow: auto;
+	
 }
 
 .case{
@@ -131,52 +157,6 @@ nav{
 	
 }
 
-.orizontal_box0{
-	border: 1px solid white;
-	position: absolute;
-	width: 100%;
-	height: 20%;
-	top: 0%;
-}
-
-.orizontal_box1{
-	border: 1px solid white;
-	position: absolute;
-
-	width: 100%;
-	height: 20%;
-	top: 20%;
-}
-
-.orizontal_box2{
-	border: 1px solid white;
-	position: absolute;
-	width: 100%;
-	height: 20%;
-	top: 40%;class="signup"
-}
-
-.orizontal_box3{
-	border: 1px solid white;
-	position: absolute;
-	width: 100%;
-	height: 20%;
-	top: 60%;
-}
-
-.orizontal_box4{
-	border: 1px solid white;
-	position: absolute;
-	width: 100%;
-	height: 20%;
-	top: 80%;
-}
-
-.gelo{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-}
 
 input[type=text]{
 	width: 190px;
@@ -224,30 +204,176 @@ input[type=submit]{
 	border-radius: 5px;
 }
 
+#tags{
+	margin-top: 10px;
+	width: 250px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#quantityInpId{
+	margin-top: 10px;
+	width: 250px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#dateInpId{
+	margin-top: 10px;
+	width: 250px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#addFoodButtonId{
+	
+	position: relative; 
+	left: 50%;
+	transform: translateX(-70%);
+}
+
+
 .addFood{
 	background: rgba(0,0,0,0.7);
-	padding: 80px;
-	padding-bottom: 150px;
-	padding-top: 50px;
+	
+	padding: 40px;
 	margin: auto;
 	letter-spacing: 2px;
-	width: 350px;
-	height: 350px;
+	width: 500px;
+	height: 400px;
 	border-radius: 20px;
 	margin-top: 80px;
 
 }
 
+#usernameInpId{
+	float: left;
+	width: 230px;
+	position: relative;
+	
+	
+}
+
+#emailInpId{
+	float: right;
+	width: 230px;
+	position: relative;
+	
+}
+
+
+#messageInpId{
+	top: 20px;
+	width: 500px;
+	height: 200px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: scroll;
+	font-size: 15px;
+	font-style: 'Montserrat', sans-serif;
+	background: transparent;
+	font-weight: 200px;
+	padding: 7px 7px;
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	editable : false;
+	max-width: 600px;
+	max-height: 180px;
+	min-width: 300px;
+	min-height: 100px;
+}
+
+
+#chooseInvitationDiv{
+	
+
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#inviteButtonId{
+	margin-top: 10px;
+	width: 150px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-70%);
+	top: 10px;
+}
+
+
 .inviteUser{
 	background: rgba(0,0,0,0.7);
-	padding: 80px;
-	padding-bottom: 150px;
-	padding-top: 50px;
+	padding: 40px;
 	margin: auto;
 	letter-spacing: 2px;
-	width: 350px;
+	width: 600px;
 	height: 400px;
 	border-radius: 20px;
 	margin-top: 80px;
 	
 }
+
+.multiselect {
+  width: 200px;
+  
+  
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+  
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  background: rgba(0,0,0,0.7);
+  font-style: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 12px;
+ 
+  
+  
+}
+
+#checkboxes label {
+  display: block;
+  align-text: left;
+  
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.divRecipeBody{
+    background: rgba(0,0,0,0.7);
+	
+	padding: 40px;
+	margin: auto;
+	width: 800px;
+	height: 200px;
+	border-radius: 20px;
+	margin-right:200px;
+}
+

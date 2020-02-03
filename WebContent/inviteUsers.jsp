@@ -9,6 +9,7 @@
 	<title>The Fridge: invite users</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/home.css">
+	
 </head>
 <body>
 	<div>
@@ -30,23 +31,26 @@
 	
 		</header>
 	</div>
-	<main>
+	
 		<div class="inviteUser">
+			<h2 style="font-family: 'Montserrat', sans-serif; color: sandybrown;" align="CENTER">Share your fridge with users</h2><br>
 			<form action="invite" method="post" >
 			<font style="color: white; font-family: 'Montserrat', sans-serif; font-size:12px; "> 
 				<c:out value="${label}" />
 			</font>
-			<input type="text" name="username" placeholder="insert username">          
-			<h5 style="margin-bottom: .7em; margin-top: .7em; color:white; font-family: 'Montserrat', sans-serif;" align="CENTER">OR</h5>
-			<input type="text" name="email" placeholder="insert email"><br><br>		
-			<input type="text" name="message" placeholder="insert message" style="height: 100px;"><br><br>
-			<input type="submit" name="invite" value="Invite" style="font-family: 'Montserrat', sans-serif;" ><br><br>
+			<div id="chooseInvitationDiv">	
+				<input id="usernameInpId" type="text" name="username" placeholder="insert username">          
+				<h5 style=" color:white; font-family: 'Montserrat', sans-serif; float:left; margin:10px; margin-left: 16px; ">OR</h5>
+				<input id="emailInpId" type="text" name="email" placeholder="insert email"><br><br>		
+			</div>
+			<textarea id="messageInpId" name="message" placeholder="insert message" style="height: 100px;"></textarea><br><br>
+			<input id="inviteButtonId" type="submit" name="invite" value="Invite" style="font-family: 'Montserrat', sans-serif;" ><br><br>
 			</form>
 		</div>
 		
 	
-
-	</main>
+		
+	
 
 </body>
 </html>
