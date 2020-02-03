@@ -15,9 +15,9 @@ public class AddFoodController {
 	
 	public void insertFood( BeanAddFood beanAddFood ) {
 		Food food = new Food();
-		food.setName(beanAddFood.getName());
-		food.setQuantity(beanAddFood.getQuantity());
-		food.setExpirationDate(beanAddFood.getExpirationDate());		
+		food.setName(beanAddFood.getNameFood());
+		food.setQuantity(beanAddFood.getQuantityFood());
+		food.setExpirationDate(beanAddFood.getExpirationDateFood());		
 		DaoFood daoFood = new DaoFood();
 		daoFood.saveFood( food, SingletonInstances.getSingletonInstance().getCurrentFridge());
 	}

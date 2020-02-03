@@ -69,7 +69,7 @@ public class ChooseRecipesController {
 				}
 				
 			}
-			System.out.println(ingredients.size());
+			
 			BeanRecipesWebsite beanRecipesWebsite = new BeanRecipesWebsite();
 			Recipe recipe = new Recipe();
 			recipe.setListFoodName(ingredients);

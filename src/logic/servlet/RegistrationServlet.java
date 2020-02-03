@@ -48,7 +48,8 @@ public class RegistrationServlet extends HttpServlet{
 			rd.forward(req, res);
 			return;
 		}
-		if( registrationUI.notExist(username, email , password) ) {
+		
+		if( this.registrationUI.notExist(username, email , password) ) {
 			registrationUI.clickedOnRegistration( username, email , password);
 			RequestDispatcher rd = req.getRequestDispatcher("home.jsp");
 			rd.forward(req, res);
