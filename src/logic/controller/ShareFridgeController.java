@@ -15,14 +15,15 @@ public class ShareFridgeController {
 		return check.usernameExist(username);
 	}
 	
-	/*public boolean isValidEmail( String email ) {
-		DaoUser daoUser = new DaoUser();
-		User user = new User();
-		user.setEmailAddress(email);
-		if( daoUser.checkValidEmail(user) ) return true;
+	public boolean isValidEmail( String email ) {
+		if( email == SingletonInstances.getSingletonInstance().getCurrentUser().getEmailAddress()) return false;
+		FacadeCheckUsername check = new FacadeCheckUsername();
+		if( check.emailExist(email)) {
+			return true;
+		}
 		return false;
 		
-	}*/
+	}
 	
 	public void inviteWithUsername( BeanShareFridge beanShareFridge ) {
 		beanShareFridge.setInvitingUsername( SingletonInstances.getSingletonInstance().getCurrentUser().getUsername() );
@@ -38,6 +39,15 @@ public class ShareFridgeController {
 		
 	public void inviteWithEmail( BeanShareFridge beanShareFridge ) {
 		beanShareFridge.setInvitingUsername( SingletonInstances.getSingletonInstance().getCurrentUser().getUsername() );
+		
+		
+		Invitation invitation = new Invitation();		
+		invitation.setInvitedEmail( beanShareFridge.getInvitedEmail() );
+		invitation.setInvitingUser(beanShareFridge.getInvitingUsername());
+		invitation.setMessage(beanShareFridge.getMessage());
+		
+		DaoInvitation daoInvitation = new DaoInvitation();
+		daoInvitation.sendInvitationDBEmail( invitation );
 	}
 	
 }

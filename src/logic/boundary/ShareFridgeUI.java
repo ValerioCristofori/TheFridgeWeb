@@ -15,7 +15,7 @@ public class ShareFridgeUI {
 		ShareFridgeController shareFridgeCTRL = new ShareFridgeController();
 		return shareFridgeCTRL.isValidUsername(username);
 	}
-	/*
+	
 	public boolean isValidEmail( String email ) {
 		// controlli sintattici eventuali	
 		// validate email ---> diversa da quella dell invitante
@@ -23,7 +23,7 @@ public class ShareFridgeUI {
 		if( shareFridgeCTRL.isValidEmail(email) ) return true;
 		return false;
 	}
-	*/
+	
 	
 	public void clickedOnInviteWithUsername( String username , String message ) {
 		//controllo massimo 100 caratteri	
@@ -36,14 +36,16 @@ public class ShareFridgeUI {
 		
 	}
 	
-	/*
-	public void clickedOnInviteWithEmail( String email ) {
-		// controlli sintattici eventuali
+	
+	public void clickedOnInviteWithEmail( String email, String message ) {
+		//controllo massimo 100 caratteri	
 		
 		BeanShareFridge beanShareFridge = new BeanShareFridge();
 		beanShareFridge.setInvitedEmail( email );
-		//ShareFridgeController.getSingletonInstance().inviteWithUsername(beanShareFridge);
+		beanShareFridge.setMessage( message );
+		ShareFridgeController shareFridgeCTRL = new ShareFridgeController();
+		shareFridgeCTRL.inviteWithEmail(beanShareFridge);
 		
 	}
-	*/
+	
 }

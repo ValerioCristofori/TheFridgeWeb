@@ -1,7 +1,8 @@
 package logic.entity;
 
 public class Invitation {
-	private String invitingUser; //forse Admin
+	private String invitingUser; 
+	private String invitedEmail;
 	private String invitedUser;
 	private String message;
 	
@@ -55,6 +56,20 @@ public class Invitation {
 	@Override
 	public String toString() {
 		return String.format( "Invitation from: '%s' to: '%s' %nMessage: '%s'", this.invitingUser , this.invitedUser , this.message );
+	}
+
+	/**
+	 * @return the invitedEmail
+	 */
+	public String getInvitedEmail() {
+		return invitedEmail;
+	}
+
+	/**
+	 * @param invitedEmail the invitedEmail to set
+	 */
+	public void setInvitedEmail(String invitedEmail) {
+		this.invitedEmail = invitedEmail;
 	}
 	
 }

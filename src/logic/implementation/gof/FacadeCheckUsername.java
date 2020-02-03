@@ -19,4 +19,10 @@ public class FacadeCheckUsername {
 		return password.equals( daoUser.takePassword(user));
 	}
 	
+	public boolean emailExist( String email) {
+		User user = new User();
+		user.setEmailAddress(email);
+		DaoUser daoUser = new DaoUser();
+		return daoUser.checkValidEmail(user);
+	}
 }

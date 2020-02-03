@@ -29,6 +29,13 @@ public class DaoInvitation {
 		}
 	}
 	
+	public void sendInvitationDBEmail( Invitation invitation ) {
+		DaoUser daoUser = new DaoUser();
+		String invitedUser = daoUser.takeUsernameFromDB(invitation.getInvitedEmail());
+		invitation.setInvitedUser(invitedUser);
+		sendInvitationDB(invitation);
+	}
+	
 	public List<Invitation> takeInvitationsFromDB( String username ) throws EmptyException {
 		DaoEntity daoSingleton = DaoEntity.getSingletonInstance();
 		ArrayList<Invitation> invitationList = new ArrayList<>();

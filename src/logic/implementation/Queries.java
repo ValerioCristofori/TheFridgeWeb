@@ -129,5 +129,10 @@ public class Queries {
         return stmt.executeQuery(sql);
     }
 	
+	public static ResultSet selectUsername(Statement stmt, String email ) throws SQLException  {
+        String sql = String.format("SELECT Username FROM User WHERE emailAddress = '%s' ;", email );
+        return stmt.executeQuery(sql);
+    }
+	
 	
 }

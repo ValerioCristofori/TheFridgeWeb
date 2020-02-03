@@ -176,6 +176,21 @@ public class DaoUser{
 			return 0;
 	}
 	
+	public String takeUsernameFromDB( String email ) {
+		DaoEntity daoSingleton = DaoEntity.getSingletonInstance();
+		try {
+			ResultSet rs = Queries.selectUsername( daoSingleton.stmt, email );
+			rs.first();
+			
+			return rs.getString("Username");
+			
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	
 	

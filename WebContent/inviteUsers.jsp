@@ -39,9 +39,9 @@
 				<c:out value="${label}" />
 			</font>
 			<div id="chooseInvitationDiv">	
-				<input id="usernameInpId" type="text" name="username" placeholder="insert username">          
+				<input id="usernameInpId" type="text" name="username" placeholder="insert username" value="">          
 				<h5 style=" color:white; font-family: 'Montserrat', sans-serif; float:left; margin:10px; margin-left: 16px; ">OR</h5>
-				<input id="emailInpId" type="text" name="email" placeholder="insert email"><br><br>		
+				<input id="emailInpId" type="text" name="email" placeholder="insert email" value=""><br><br>		
 			</div>
 			<textarea id="messageInpId" name="message" placeholder="insert message" style="height: 100px;"></textarea><br><br>
 			<input id="inviteButtonId" type="submit" name="invite" value="Invite" style="font-family: 'Montserrat', sans-serif;" ><br><br>

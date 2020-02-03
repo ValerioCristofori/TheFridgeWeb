@@ -25,22 +25,45 @@ public class InviteUserServlet extends HttpServlet{
 	public void doPost( HttpServletRequest req, HttpServletResponse res ) throws ServletException, IOException {
 		
 			String username = req.getParameter("username");
-			//String email = req.getParameter("email");
+			String email = req.getParameter("email");
 			String message = req.getParameter("message");
-			
-			if( !shareFridgeUI.isValidUsername(username) ) {
-				
-				req.setAttribute("label", "Username not valid");
+			System.out.println(username);
+			System.out.println(email);
+			if( username != "" ) {
+				if( !shareFridgeUI.isValidUsername(username) ) {
+					
+					req.setAttribute("label", "Username not valid");
+					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+					rd.forward(req, res);
+		    		return;		
+				}
+				this.shareFridgeUI.clickedOnInviteWithUsername(username, message);
 				RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
 				rd.forward(req, res);
-	    		return;		
-			}		
-		
-			this.shareFridgeUI.clickedOnInviteWithUsername(username, message);
-			RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
-			rd.forward(req, res);
-			
+			}else if( username == "") {
+				if( email != "" ) {
+					if( !shareFridgeUI.isValidEmail(email) ) {
+						
+						req.setAttribute("label", "Email not valid");
+						RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+						rd.forward(req, res);
+			    		return;		
+					}
+					this.shareFridgeUI.clickedOnInviteWithEmail(email, message);
+					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+					rd.forward(req, res);
+				}else {
+					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+					rd.forward(req, res);	
+				}
 			}
+				
+				
+			
+		
+			
+			
+		}
 			   	 
 	
 
