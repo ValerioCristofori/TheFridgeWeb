@@ -28,8 +28,7 @@ public class LoginServlet extends HttpServlet{
 			RequestDispatcher rd = req.getRequestDispatcher("home.jsp");
 			rd.forward(req, res);
 		}else {
-			req.setAttribute("label", "Username or password not valid");
-			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("loginFailed.html");
 			rd.forward(req, res);
 		}
 		

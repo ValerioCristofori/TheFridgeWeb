@@ -14,8 +14,6 @@ public class RegistrationServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	private RegistrationUI registrationUI;
-	private static final String PAGE = "signup.jsp";
-	private static final String LABEL = "label";
 	
 	public RegistrationServlet() {
 		this.registrationUI = new RegistrationUI();
@@ -29,22 +27,19 @@ public class RegistrationServlet extends HttpServlet{
 		
 		if( !registrationUI.validSyntaxUsername(username) ) {
 			//error message
-			req.setAttribute(LABEL, "Username not valid (from 4 to 30 chars)");
-			RequestDispatcher rd = req.getRequestDispatcher(PAGE);
+			RequestDispatcher rd = req.getRequestDispatcher("signUsernameValid.html");
 			rd.forward(req, res);
 			return;
 		}		
 		if( !registrationUI.validSyntaxEmail(email) ) {
 			//error message
-			req.setAttribute(LABEL, "Email not valid");
-			RequestDispatcher rd = req.getRequestDispatcher(PAGE);
+			RequestDispatcher rd = req.getRequestDispatcher("signEmailValid.html");
 			rd.forward(req, res);
 			return;
 		}
 		if( !registrationUI.validSyntaxPassword(password) ) {
 			//error message
-			req.setAttribute(LABEL, "Password not valid, (from 6 to 30 chars)");
-			RequestDispatcher rd = req.getRequestDispatcher(PAGE);
+			RequestDispatcher rd = req.getRequestDispatcher("signPassValid.html");
 			rd.forward(req, res);
 			return;
 		}
@@ -55,8 +50,7 @@ public class RegistrationServlet extends HttpServlet{
 			rd.forward(req, res);
 		}
 		else {
-			req.setAttribute(LABEL, "Username or email already exist");
-			RequestDispatcher rd = req.getRequestDispatcher(PAGE);
+			RequestDispatcher rd = req.getRequestDispatcher("signAlreadyExist.html");
 			rd.forward(req, res);
 		}
 	}

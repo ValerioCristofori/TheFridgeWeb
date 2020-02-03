@@ -30,11 +30,11 @@ import logic.boundary.ChangeFridgeUI;
 		else if( action.equals("Delete account")) {
 			this.changeFridgeUI.clickedOnDeleteAccount();
 			//aggiungere il fatto che non si può tornare indietro una volta fatto il delete
-			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("index.html");
 			rd.forward(req, res);
 		}
 		else if( action.equals("Logout")) {
-			RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("index.html");
 			rd.forward(req, res);
 		}
 	}
