@@ -3,7 +3,6 @@ package logic.controller;
 import java.util.Random;
 
 import logic.bean.BeanCredentials;
-import logic.bean.BeanRegistration;
 import logic.dao.DaoFridge;
 import logic.dao.DaoUser;
 import logic.entity.Admin;
@@ -17,11 +16,11 @@ import logic.implementation.gof.SingletonInstances;
 public class RegistrationController implements ValidateCredentialsInterface, SaveInstances{
 
 	
-	public void registration( BeanRegistration beanR ) {
+	public void registration( BeanCredentials beanC ) {
 		User admin = new Admin();
-		admin.setUsername(beanR.getUsername());
-		admin.setEmailAddress(beanR.getEmailAddress());
-		admin.setPassword(beanR.getPassword());	
+		admin.setUsername(beanC.getUsernameBean());
+		admin.setEmailAddress(beanC.getEmailAddressBean());
+		admin.setPassword(beanC.getPasswordBean());	
 		
 		DaoUser daoUser = new DaoUser();
 		daoUser.saveRegistrationToDB(admin);
@@ -47,7 +46,7 @@ public class RegistrationController implements ValidateCredentialsInterface, Sav
 	@Override
 	public boolean checkValid( BeanCredentials beanC ) {
 		FacadeCheckUsername check = new FacadeCheckUsername();
-		return !( check.usernameExist(beanC.getUsername()));
+		return !( check.usernameExist(beanC.getUsernameBean()));
 	}
 	
 	private void setDefaultFridge( Fridge fridge ) {

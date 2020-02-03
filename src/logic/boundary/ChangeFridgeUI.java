@@ -75,7 +75,7 @@ public class ChangeFridgeUI {
 	        		ChangeFridgeUI.class.getName()); 
 	        logger.log(Level.WARNING, "empty fridge list");
 		}
-		return new ArrayList<String>();			
+		return new ArrayList<>();			
 	}
 	
 	public void clickedOnChangeFridge( int index ) {

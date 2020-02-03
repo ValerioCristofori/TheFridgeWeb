@@ -1,44 +1,43 @@
 package logic.bean;
 
 public class BeanCredentials {
-	private String username;
-	private String password;
-	private String emailAddress;
+	private String usernameBean;
+	private String passwordBean;
+	private String emailAddressBean;
 	/**
-	 * @return the username
+	 * @return the passwordBean
 	 */
-	public String getUsername() {
-		return username;
+	public String getPasswordBean() {
+		return passwordBean;
 	}
 	/**
-	 * @param username the username to set
+	 * @param passwordBean the passwordBean to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setPasswordBean(String passwordBean) {
+		this.passwordBean = passwordBean;
 	}
 	/**
-	 * @return the password
+	 * @return the emailAddressBean
 	 */
-	public String getPassword() {
-		return password;
+	public String getEmailAddressBean() {
+		return emailAddressBean;
 	}
 	/**
-	 * @param password the password to set
+	 * @param emailAddressBean the emailAddressBean to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEmailAddressBean(String emailAddressBean) {
+		this.emailAddressBean = emailAddressBean;
 	}
 	/**
-	 * @return the emailAddress
+	 * @return the usernameBean
 	 */
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getUsernameBean() {
+		return usernameBean;
 	}
 	/**
-	 * @param emailAddress the emailAddress to set
+	 * @param usernameBean the usernameBean to set
 	 */
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setUsernameBean(String usernameBean) {
+		this.usernameBean = usernameBean;
 	}
-	
 }

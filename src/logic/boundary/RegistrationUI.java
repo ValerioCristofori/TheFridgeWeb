@@ -3,24 +3,30 @@ package logic.boundary;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import logic.bean.BeanRegistration;
+import logic.bean.BeanCredentials;
 import logic.controller.RegistrationController;
 import logic.implementation.Credentials;
 
 public class RegistrationUI extends Credentials {
-
+	private String username;
+	private String password;
+	private String emailAddress;
+	
 	public void clickedOnRegistration( String username, String emailAddress, String password ){
-		BeanRegistration beanR = new BeanRegistration();
-		beanR.setUsername(username);
-		beanR.setEmailAddress(emailAddress);
-		beanR.setPassword(password);
+		BeanCredentials beanC = new BeanCredentials();
+		beanC.setUsernameBean(username);
+		beanC.setEmailAddressBean(emailAddress);
+		beanC.setPasswordBean(password);
 		RegistrationController registrationCTRL = new RegistrationController();
-		registrationCTRL.registration( beanR );
+		registrationCTRL.registration( beanC );
 	}  
 	
 	
-	public boolean notExist(String username, String emailAddress, String password) {
-		return super.notExist(username, emailAddress, password);
+	public boolean notExist(String name, String email, String pass) {
+		this.username = name;
+		this.password = pass;
+		this.emailAddress = email;
+		return super.notExist(this.username, this.emailAddress, this.password);
 	}
 	
 	public boolean validSyntaxUsername( String username ) {

@@ -15,8 +15,8 @@ public class LoginController implements ValidateCredentialsInterface, SaveInstan
 	@Override
 	public boolean checkValid( BeanCredentials beanC ) {
 		User admin = new Admin();
-		admin.setUsername(beanC.getUsername());
-		admin.setPassword(beanC.getPassword());
+		admin.setUsername(beanC.getUsernameBean());
+		admin.setPassword(beanC.getPasswordBean());
 		FacadeCheckUsername check = new FacadeCheckUsername();
 		if( !check.usernameExist(admin.getUsername()) ) return false;
 		//validare se la pass e quella
@@ -24,6 +24,7 @@ public class LoginController implements ValidateCredentialsInterface, SaveInstan
 			Fridge fridge = this.takeFridge(admin);
 			admin.setEmailAddress(this.takeEmail(admin));
 			this.save( admin, fridge);
+			// devo prendere email e settarla in \admin/
 			return true;
 		}
 		return false;
@@ -38,7 +39,7 @@ public class LoginController implements ValidateCredentialsInterface, SaveInstan
 	private Fridge takeFridge( User user ) {
 		DaoUser daoUser = new DaoUser();
 		return daoUser.getFridgeOfUser( user );
-		
+		//this.currentFridge = this.myFridge;
 	}
 	
 	@Override
