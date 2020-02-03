@@ -17,6 +17,7 @@ public class InviteUserServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ShareFridgeUI shareFridgeUI;
+	private static final String PAGE = "inviteUsers.jsp";
 	
 	public InviteUserServlet() {
 		this.shareFridgeUI = new ShareFridgeUI();
@@ -27,33 +28,32 @@ public class InviteUserServlet extends HttpServlet{
 			String username = req.getParameter("username");
 			String email = req.getParameter("email");
 			String message = req.getParameter("message");
-			System.out.println(username);
-			System.out.println(email);
+
 			if( username != "" ) {
 				if( !shareFridgeUI.isValidUsername(username) ) {
 					
 					req.setAttribute("label", "Username not valid");
-					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 					rd.forward(req, res);
 		    		return;		
 				}
 				this.shareFridgeUI.clickedOnInviteWithUsername(username, message);
-				RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 				rd.forward(req, res);
 			}else if( username == "") {
 				if( email != "" ) {
 					if( !shareFridgeUI.isValidEmail(email) ) {
 						
 						req.setAttribute("label", "Email not valid");
-						RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+						RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 						rd.forward(req, res);
 			    		return;		
 					}
 					this.shareFridgeUI.clickedOnInviteWithEmail(email, message);
-					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 					rd.forward(req, res);
 				}else {
-					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.jsp");
+					RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 					rd.forward(req, res);	
 				}
 			}

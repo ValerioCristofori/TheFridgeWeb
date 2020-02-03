@@ -17,6 +17,7 @@ public class ChangeFridgeServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private ChangeFridgeUI changeFridgeUI;
+	private static final String PAGE = "changeFridge.jsp";
 
 	
 	public ChangeFridgeServlet() {
@@ -26,12 +27,12 @@ public class ChangeFridgeServlet extends HttpServlet {
 	public void doGet( HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		SingletonInstances instances = SingletonInstances.getSingletonInstance();
 		req.setAttribute("label-username", instances.getCurrentUser().getUsername() );
-		//req.setAttribute("label-email", instances.getCurrentUser().getEmailAddress());
-		RequestDispatcher rd = req.getRequestDispatcher("changeFridge.jsp");
+		
+		RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 		rd.forward(req, res); 
     	
     	
-    	//yourFridgeLabel.setText(instances.getMyFridge().getName());
+    	
 	}
 	
 	public void doPost( HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -42,28 +43,25 @@ public class ChangeFridgeServlet extends HttpServlet {
 		 
 		
 		if ( action.equals("accept")) {
-			System.out.println(req.getParameter("accept"));
 			int i = Integer.parseInt( req.getParameter("index") );
 		    try {
 				this.changeFridgeUI.clickedOnAcceptInvitation(listInviting.get(i));
 				//rimuovo da lista
 				listInviting.remove(i);
-				RequestDispatcher rd = req.getRequestDispatcher("changeFridge.jsp");
+				RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 				rd.forward(req, res);
 	    			
 			} catch (TooManyFridgesException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		    
 		}
 		else if (action.equals("decline") ) {
 			int i = Integer.parseInt( req.getParameter("index") );
-			System.out.println(i);
 		    this.changeFridgeUI.clickedOnDeclineInvitation(listInviting.get(i));
 		    //rimuovo da lista
 			listInviting.remove(i);
-		    RequestDispatcher rd = req.getRequestDispatcher("changeFridge.jsp");
+		    RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 			rd.forward(req, res);
     			
 		}

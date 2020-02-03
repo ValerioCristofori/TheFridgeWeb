@@ -24,9 +24,7 @@ public class ChooseRecipesUI {
 	public void initListFood(){ 
 		try {
 			BeanChooseRecipes beanChooseRecipes = ChooseRecipesController.takeFood();
-			this.listFood = (ArrayList<String>) beanChooseRecipes.getListFood();
-			return;
-			//return FXCollections.observableArrayList( list );				
+			this.listFood = (ArrayList<String>) beanChooseRecipes.getListFood();				
 
 		}catch( EmptyException ee ) {
 			// creo un Logger 
@@ -53,7 +51,7 @@ public class ChooseRecipesUI {
 		for( int i = 0; i< beanChooseRecipes.getListRecipe().size(); i++ ) {
 			listImages.add(beanChooseRecipes.getListRecipe().get(i).getLink());
 			listTitle.add(beanChooseRecipes.getListRecipe().get(i).getTitle());
-			listContents.add(beanChooseRecipes.getListRecipe().get(i).getContent());
+			listContents.add((ArrayList<String>) beanChooseRecipes.getListRecipe().get(i).getContent());
 		}
 		this.images = listImages;
 		this.titles = listTitle;
@@ -70,7 +68,7 @@ public class ChooseRecipesUI {
 	/**
 	 * @return the contents
 	 */
-	public ArrayList<ArrayList<String>> getContents() {
+	public List<ArrayList<String>> getContents() {
 		return contents;
 	}
 
@@ -79,7 +77,7 @@ public class ChooseRecipesUI {
 	/**
 	 * @return the titles
 	 */
-	public ArrayList<String> getTitles() {
+	public List<String> getTitles() {
 		return titles;
 	}
 
@@ -87,7 +85,7 @@ public class ChooseRecipesUI {
 	/**
 	 * @return the images
 	 */
-	public ArrayList<String> getImages() {
+	public List<String> getImages() {
 		return images;
 	}
 

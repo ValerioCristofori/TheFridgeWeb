@@ -24,7 +24,6 @@ public class LoginController implements ValidateCredentialsInterface, SaveInstan
 			Fridge fridge = this.takeFridge(admin);
 			admin.setEmailAddress(this.takeEmail(admin));
 			this.save( admin, fridge);
-			// devo prendere email e settarla in \admin/
 			return true;
 		}
 		return false;
@@ -39,7 +38,7 @@ public class LoginController implements ValidateCredentialsInterface, SaveInstan
 	private Fridge takeFridge( User user ) {
 		DaoUser daoUser = new DaoUser();
 		return daoUser.getFridgeOfUser( user );
-		//this.currentFridge = this.myFridge;
+		
 	}
 	
 	@Override

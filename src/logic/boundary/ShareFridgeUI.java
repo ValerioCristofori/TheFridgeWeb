@@ -20,8 +20,8 @@ public class ShareFridgeUI {
 		// controlli sintattici eventuali	
 		// validate email ---> diversa da quella dell invitante
 		ShareFridgeController shareFridgeCTRL = new ShareFridgeController();
-		if( shareFridgeCTRL.isValidEmail(email) ) return true;
-		return false;
+		return shareFridgeCTRL.isValidEmail(email);
+		
 	}
 	
 	

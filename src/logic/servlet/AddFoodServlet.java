@@ -17,6 +17,8 @@ public class AddFoodServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	private AddFoodUI addFoodUI;
+	private static final String LABEL = "label";
+	private static final String PAGE = "addFood.jsp";
 	
 	public AddFoodServlet() {
 		this.addFoodUI= new AddFoodUI();
@@ -29,34 +31,35 @@ public class AddFoodServlet extends HttpServlet{
 			String date = req.getParameter("date");
 			
 			if( !addFoodUI.validSemanticName( name )  ) {
-				req.setAttribute("label", "Name not valid");
-				RequestDispatcher rd = req.getRequestDispatcher("addFood.jsp");
+				req.setAttribute(LABEL, "Name not valid");
+				RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 				rd.forward(req, res);
 	    		return;		
 	    	}
 	    	if( !addFoodUI.validSyntaxQuantity( quantity )  ) {
-	    		req.setAttribute("label", "Quantity not valid");
-				RequestDispatcher rd = req.getRequestDispatcher("addFood.jsp");
+	    		req.setAttribute(LABEL, "Quantity not valid");
+				RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 				rd.forward(req, res);
 	    		return;		
 	    	}
-	    	try {
-		    	LocalDate expirationDate = LocalDate.parse(date);
-		    	this.addFoodUI.clickOnInsertFood( name, quantity, expirationDate);
-		    	RequestDispatcher rd = req.getRequestDispatcher("addFood.jsp");
-				rd.forward(req, res);
+	    	
+	    	LocalDate expirationDate = LocalDate.parse(date);
+	    	this.addFoodUI.clickOnInsertFood( name, quantity, expirationDate);
+	    	RequestDispatcher rd = req.getRequestDispatcher(PAGE);
+			rd.forward(req, res);
 		    	
-	    	}
-	    	catch( DateTimeParseException dtpe) {
-	    		LocalDate expirationDate = null;
-	    		this.addFoodUI.clickOnInsertFood( name, quantity, expirationDate);
-	    		RequestDispatcher rd = req.getRequestDispatcher("addFood.jsp");
-				rd.forward(req, res);
-	    	}
+		}
+	    catch( DateTimeParseException dtpe) {
+    		LocalDate expirationDate = null;
+    		String name = req.getParameter("name");
+    		int quantity = Integer.parseInt(req.getParameter("quantity"));
+    		this.addFoodUI.clickOnInsertFood( name, quantity, expirationDate);
+    		RequestDispatcher rd = req.getRequestDispatcher(PAGE);
+			rd.forward(req, res);
 		}
 	    catch( NumberFormatException ne ) {
-	    	req.setAttribute("label", "Quantity not valid");
-			RequestDispatcher rd = req.getRequestDispatcher("addFood.jsp");
+	    	req.setAttribute(LABEL, "Quantity not valid");
+			RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 			rd.forward(req, res);
 	    }    	
 		
@@ -67,7 +70,7 @@ public class AddFoodServlet extends HttpServlet{
 		String[] list = ListAllFood.getListAllFood();
 		
 		req.setAttribute("list", list );
-		RequestDispatcher rd = req.getRequestDispatcher("addFood.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 		rd.forward(req, res);
 	}
 	

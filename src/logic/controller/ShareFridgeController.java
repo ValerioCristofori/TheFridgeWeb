@@ -18,10 +18,7 @@ public class ShareFridgeController {
 	public boolean isValidEmail( String email ) {
 		if( email == SingletonInstances.getSingletonInstance().getCurrentUser().getEmailAddress()) return false;
 		FacadeCheckUsername check = new FacadeCheckUsername();
-		if( check.emailExist(email)) {
-			return true;
-		}
-		return false;
+		return check.emailExist(email);
 		
 	}
 	

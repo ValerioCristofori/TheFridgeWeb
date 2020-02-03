@@ -49,14 +49,15 @@ public class Recipe {
 	/**
 	 * @return the content
 	 */
-	public ArrayList<String> getContent() {
+	public List<String> getContent() {
 		return content;
 	}
 	/**
 	 * @param content the content to set
 	 */
-	public void setContent(ArrayList<String> content) {
-		this.content = content;
+	public void setContent(List<String> content) {
+		this.content = 
+				(ArrayList<String>) content;
 	}
 	
 	@Override

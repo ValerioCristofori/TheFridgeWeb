@@ -79,28 +79,15 @@ public class ChooseRecipesController {
 			RecipesWebsiteUI recipesWebSiteUI = new RecipesWebsiteUI();
 			try {
 				beanRecipesWebsite = recipesWebSiteUI.searchRecipe(beanRecipesWebsite);
-				System.out.println( beanRecipesWebsite.getRecipe().getLink()) ;
+				
 				
 				//aggiungo ricetta
 				beanRecipes.getListRecipe().add( beanRecipesWebsite.getRecipe());
 				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (IOException|InterruptedException|UnirestException|JSONException e) {
 				e.printStackTrace();
 			}
-			// call searchRecipes method and take parameters from the bean class
-			 catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (UnirestException e) {
-				// TODO Auto-generated catch block
-				
-				e.printStackTrace();
-			}catch( JSONException je ) {
-				// TODO Auto-generated catch block
-				je.printStackTrace();
-			}
+			
 		}
 		
 		return beanRecipes;
