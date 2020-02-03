@@ -1,5 +1,5 @@
 dist: trusty
-language: java
+language: java, jsp
 jdk: 
 - openjdk8
  
