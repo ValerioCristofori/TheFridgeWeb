@@ -17,6 +17,7 @@ public class AddFoodServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	private AddFoodUI addFoodUI;
+	private static final String PAGE = "addFood.html";
 	
 	public AddFoodServlet() {
 		this.addFoodUI= new AddFoodUI();
@@ -41,7 +42,7 @@ public class AddFoodServlet extends HttpServlet{
 	    	
 	    	LocalDate expirationDate = LocalDate.parse(date);
 	    	this.addFoodUI.clickOnInsertFood( name, quantity, expirationDate);
-	    	RequestDispatcher rd = req.getRequestDispatcher("addFood.html");
+	    	RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 			rd.forward(req, res);
 		    	
 		}
@@ -50,7 +51,7 @@ public class AddFoodServlet extends HttpServlet{
     		String name = req.getParameter("name");
     		int quantity = Integer.parseInt(req.getParameter("quantity"));
     		this.addFoodUI.clickOnInsertFood( name, quantity, expirationDate);
-    		RequestDispatcher rd = req.getRequestDispatcher("addFood.html");
+    		RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 			rd.forward(req, res);
 		}
 	    catch( NumberFormatException ne ) {
@@ -65,7 +66,7 @@ public class AddFoodServlet extends HttpServlet{
 		String[] list = ListAllFood.getListAllFood();
 		
 		req.setAttribute("list", list );
-		RequestDispatcher rd = req.getRequestDispatcher("addFood.html");
+		RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 		rd.forward(req, res);
 	}
 	

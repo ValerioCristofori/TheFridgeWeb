@@ -17,6 +17,7 @@ public class InviteUserServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ShareFridgeUI shareFridgeUI;
+	private static final String PAGE = "inviteUsers.html";
 	
 	public InviteUserServlet() {
 		this.shareFridgeUI = new ShareFridgeUI();
@@ -35,7 +36,7 @@ public class InviteUserServlet extends HttpServlet{
 		    		return;		
 				}
 				this.shareFridgeUI.clickedOnInviteWithUsername(username, message);
-				RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.html");
+				RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 				rd.forward(req, res);
 			}else if( username == "") {
 				if( email != "" ) {
@@ -45,10 +46,10 @@ public class InviteUserServlet extends HttpServlet{
 			    		return;		
 					}
 					this.shareFridgeUI.clickedOnInviteWithEmail(email, message);
-					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.html");
+					RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 					rd.forward(req, res);
 				}else {
-					RequestDispatcher rd = req.getRequestDispatcher("inviteUsers.html");
+					RequestDispatcher rd = req.getRequestDispatcher(PAGE);
 					rd.forward(req, res);	
 				}
 			}
