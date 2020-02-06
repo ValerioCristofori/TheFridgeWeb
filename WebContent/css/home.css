@@ -1,0 +1,379 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+header{
+	box-sizing: border-box;
+	background: rgba(41,171,135,0.9);
+
+
+
+}
+
+body{
+	background-image: url(../images/imm.jpg);
+	background-repeat: no-repeat; 
+	background-position: center center; 
+	background-attachment: fixed;
+	background-size: cover;
+
+}
+
+nav{
+	display: flex;
+}
+
+.omino{
+	top: 0;
+	left: 0;
+	margin-top:3px;
+	margin-left:3px;
+
+}
+
+.rect_head{
+	position: relative;
+    width: 100%;
+    height: 60px;
+
+}
+
+.dark-logo{
+	position: absolute;
+    margin: auto;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 120px;
+    height: 120px;
+    margin-right: 50px;
+    
+}
+
+.nav-links{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	width: 350%;
+	margin-right: 100px;
+}
+
+.nav-links li{
+	list-style: none;
+}
+
+.nav-links a{
+	color: white;
+	text-decoration: none;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+
+.container {
+  border: 1px solid white;
+  position: relative;
+  display: table;
+  background: rgba(0,0,0,0.7);
+  padding-top: 20px;
+  margin: 0 auto;
+  margin-top:70px;
+  height: 430px;
+  width: 65%;
+  border-radius: 20px;
+  overflow-y: scroll;
+  max-height: 430px;
+}
+
+#nameColumn{
+	background: rgba(41,171,135,0.9);
+	
+}
+
+#quantityColumn{
+	background: rgba(41,171,135,0.9);
+	
+}
+
+#dateColumn{
+	background: rgba(41,171,135,0.9);
+	
+}
+
+
+#scroller{
+	height: 430px;
+	overflow: auto;
+	
+}
+
+.case{
+	height: 250px;
+	width: 900px;
+	background: rgba(0,0,0,0.7);
+	border-radius: 40px;
+}
+
+.left_box{
+	float: left;
+	border: 1px solid white;
+	height: 96%;
+	width: 48%;
+	position: absolute;
+	margin-top: 1%;
+	margin-left: 1%;
+
+
+}
+
+.right_box{
+	float: right;
+	border: 1px solid white;
+	height: 96%;
+	width: 48%;
+	position: absolute;
+	margin-left: 51%;
+	margin-top: 1%;
+
+}
+
+.profile_div{
+	background: rgba(41,171,135,0.9);
+	height: 579px;
+	width: 20%;
+}
+
+.invitation{
+	background: rgba(41,171,135,0.9);
+	height: 100%;
+	margin-left: 300px;
+	width: 20%;
+}
+
+.fridges{
+	
+}
+
+
+input[type=text]{
+	width: 190px;
+	text-align: center;
+	font-size: 16px;
+	font-style: 'Montserrat', sans-serif;
+	background: transparent;
+	font-weight: 200px;
+	padding: 7px 0;
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+
+input[type=date]{
+	width: 190px;
+	text-align: center;
+	font-size: 16px;
+	font-style: 'Montserrat', sans-serif;
+	background: transparent;
+	font-weight: 200px;
+	padding: 7px 0;
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+
+input[type=submit]{
+	color: black;
+	letter-spacing: 2px;
+	padding: 10px 25px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 5px;
+	background: #29AB87;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+.button_invite{
+	letter-spacing: 2px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 5px;
+}
+
+#tags{
+	margin-top: 10px;
+	width: 250px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#quantityInpId{
+	margin-top: 10px;
+	width: 250px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#dateInpId{
+	margin-top: 10px;
+	width: 250px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#addFoodButtonId{
+	
+	position: relative; 
+	left: 50%;
+	transform: translateX(-70%);
+}
+
+
+.addFood{
+	background: rgba(0,0,0,0.7);
+	
+	padding: 40px;
+	margin: auto;
+	letter-spacing: 2px;
+	width: 500px;
+	height: 400px;
+	border-radius: 20px;
+	margin-top: 80px;
+
+}
+
+#usernameInpId{
+	float: left;
+	width: 230px;
+	position: relative;
+	
+	
+}
+
+#emailInpId{
+	float: right;
+	width: 230px;
+	position: relative;
+	
+}
+
+
+#messageInpId{
+	top: 20px;
+	width: 500px;
+	height: 200px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+	overflow: scroll;
+	font-size: 15px;
+	font-style: 'Montserrat', sans-serif;
+	background: transparent;
+	font-weight: 200px;
+	padding: 7px 7px;
+	color: white;
+	border: 1px solid white;
+	border-radius: 10px;
+	editable : false;
+	max-width: 600px;
+	max-height: 180px;
+	min-width: 300px;
+	min-height: 100px;
+}
+
+
+#chooseInvitationDiv{
+	
+
+	position: relative; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#inviteButtonId{
+	margin-top: 10px;
+	width: 150px;
+	position: relative; 
+	left: 50%;
+	transform: translateX(-70%);
+	top: 10px;
+}
+
+
+.inviteUser{
+	background: rgba(0,0,0,0.7);
+	padding: 40px;
+	margin: auto;
+	letter-spacing: 2px;
+	width: 600px;
+	height: 400px;
+	border-radius: 20px;
+	margin-top: 80px;
+	
+}
+
+.multiselect {
+  width: 200px;
+  
+  
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+  
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+  background: rgba(0,0,0,0.7);
+  font-style: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 12px;
+ 
+  
+  
+}
+
+#checkboxes label {
+  display: block;
+  align-text: left;
+  
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+.divRecipeBody{
+    background: rgba(0,0,0,0.7);
+	
+	padding: 40px;
+	margin: auto;
+	width: 800px;
+	height: 200px;
+	border-radius: 20px;
+	margin-right:200px;
+}
+
